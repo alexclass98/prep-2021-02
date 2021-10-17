@@ -1,5 +1,6 @@
-#include "last.h"
-void bib(int num) {
+#include "iterator.h"
+
+void print_range(int num) {
     if (num < 1) {
     for (int i=1; num-i <= 0; i--) {
         printf("%d", i);

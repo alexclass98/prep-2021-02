@@ -15,9 +15,9 @@ size_t timer_from(int from) {
 
 
 int custom_pow(int base, int power) {
-    int Mult = 1;
+    int mult = 1;
     for (int i=0; i < power; i++)
-    Mult*=base;
-    return Mult;
+    mult*=base;
+    return mult;
 }
 

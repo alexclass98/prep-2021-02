@@ -1,6 +1,6 @@
 #include "utils.h"
 #include "mod.h"
-#include "last.h"
+#include "iterator.h"
 #include <stdlib.h>
 
 #define ERR_ARGS_COUNT (-1)
@@ -21,31 +21,24 @@ int main(int argc, const char** argv) {
 
     switch (Test_case) {
         case TST_FOO_FIX: {
-            int to = atoi(data);
-            size_t ticks_count = timer_from(to);
-            printf("%zu", ticks_count);
-            break;
-        }
+             printf("%zu\n", timer_from(atoi(data)));
+             break;
+		}
+
         case TST_FOO_IMPL: {
             if (argc == 4) {
-                 int base = atoi(data);
-                 int pow =  atoi(argv[3]);
-                 int res = custom_pow(base, pow);
-
-                 printf("%i\n", res);
+                 printf("%i\n", custom_pow(atoi(data), atoi(argv[3])));
                 break;
             } else {
                 return ERR_ARGS_COUNT;
             }
         }
         case TST_MOD_IMPL: {
-            int num = atoi(data);
-            mod(num);
+            mod(atoi(data));
                  break;
         }
         case 4 : {
-            int num = atoi(data);
-            bib(num);
+            print_range(atoi(data));
             break;
         }
         default: {

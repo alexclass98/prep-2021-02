@@ -6,7 +6,7 @@ SRCS = \
        project/src/main.c \
        project/src/utils.c \
 	   project/src/mod.c \
-	   project/src/last.c
+	   project/src/iterator.c
 
 .PHONY: all build rebuild check test clean
 
