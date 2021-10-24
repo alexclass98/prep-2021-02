@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <stdlib.h>
+
 struct masterRecord{ int 		Number; char 		Name[20]; char 		Surname[20]; char 		addres[30]; char 		TelNumber[15]; double  	indebtedness; double    	credit_limit;  double  	cash_payments; };
 	typedef  struct  masterRecord Data;
 	int main(void){
@@ -19,7 +22,7 @@ struct masterRecord{ int 		Number; char 		Name[20]; char 		Surname[20]; char 		a
 							}
 					break;
 				case    2:
-					Ptr = fopen(filename, "r+" );
+					Ptr = fopen("transaction.dat", "r+" );
 						if(Ptr == NULL ){
 						puts("Not acess");	
 						}
@@ -33,12 +36,12 @@ struct masterRecord{ int 		Number; char 		Name[20]; char 		Surname[20]; char 		a
 					Ptr_2 = fopen("transaction.dat", "r" );
 					blackrecord = fopen("blackrecord.dat", "w" );	
 					#include"utils.h"
-				if(	Ptr == NULL ||  	Ptr_2 == NULL ||  		blackRecord == NULL      ){
+				if(	Ptr == NULL ||  	Ptr_2 == NULL     ){
 						puts("exit");
 					}
 					else{
 					blackRecord( Ptr, Ptr_2 , blackrecord  , client_data  ,    transfer );
-					free(Ptr)
+					free(Ptr);
 					fclose(Ptr);
 					fclose(Ptr_2);	
 					fclose(blackrecord);
@@ -75,13 +78,13 @@ struct masterRecord{ int 		Number; char 		Name[20]; char 		Surname[20]; char 		a
 				"9 Client cash payments:"
 										);
 				} }
-       void transactionWrite(FILE *ofPtr, Data transfer     ){
+       void transactionWrite(FILE *ofPtr , Data transfer     ){
 		#include"utils.h"
 		printf("%s\n%s\n",  
 			"1 Number account: ",
 			"2 Client cash payments: ");
 			while(scanf("%d %lf" , &transfer.Number  , &transfer.cash_payments )   != -1      ){
-				fprintf( filename, "%-3d%-6.2f\n", transfer.Number, 		transfer.cash_payments    ) ;
+				fprintf( ofPtr, "%-3d%-6.2f\n", transfer.Number, 		transfer.cash_payments    ) ;
 				printf("%s\n%s\n",  
 						"1 Number account:",
 						"2 Client cash payments: "
